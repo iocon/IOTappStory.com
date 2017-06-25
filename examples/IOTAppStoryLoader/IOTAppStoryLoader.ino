@@ -28,7 +28,7 @@
 */
 
 #define SKETCH "IOTappStoryLoader "
-#define VERSION "V1.2"
+#define VERSION "V1.2.1"
 #define FIRMWARE SKETCH VERSION
 
 #define SERIALDEBUG       // Serial is used to present debugging messages 
@@ -44,6 +44,7 @@
 #include <Ticker.h>
 #include <EEPROM.h>
 #include "FS.h"
+#include <ArduinoJson.h>
 
 extern "C" {
 #include "user_interface.h" // this is for the RTC memory read/write functions
@@ -106,11 +107,12 @@ strConfig config = {
 
 
 //---------- FUNCTIONS ----------
-// to help the compiler, sometimes, functions have  to be declared here
+// to help the compiler, sometimes, functions have to be declared here
 void initialize(void);
 void connectNetwork(void);
 void loopWiFiManager(void);
 void eraseFlash(void);
+void readFullConfiguration(void);
 
 
 //---------- OTHER .H FILES ----------
